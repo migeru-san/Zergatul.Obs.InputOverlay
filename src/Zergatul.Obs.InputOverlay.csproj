@@ -7,21 +7,22 @@
     <RootNamespace>Zergatul.Obs.InputOverlay</RootNamespace>
     <Authors>Zergatul</Authors>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
-    <Version>2.1.0</Version>
+    <Version>2.2.1</Version>
     <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
     <StartupObject>Zergatul.Obs.InputOverlay.Program</StartupObject>
     <PackageProjectUrl>https://github.com/Zergatul/Zergatul.Obs.InputOverlay</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Zergatul/Zergatul.Obs.InputOverlay</RepositoryUrl>
 
-    <!-- Publish settings -->
-    <!-- uncomment below line before publish -->
-    <!-- for some reason VS2022 don't allow to debug while this enabled -->
-    <!--<PublishSingleFile>true</PublishSingleFile> -->
     <PublishTrimmed>true</PublishTrimmed>
     <PublishReadyToRun>true</PublishReadyToRun>
     <TrimMode>copyused</TrimMode>
     <SelfContained>true</SelfContained>
+    <ApplicationIcon>Properties\AppIcon.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Properties\AppIcon.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <Content Update="wwwroot\default-gamepad.html">
@@ -33,7 +34,22 @@
     <Content Update="wwwroot\default-mouse.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Update="wwwroot\DualSense-RawInput.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\DualSense-RawInput.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\DualSense-XInput.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\DualSense-XInput.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Update="wwwroot\gamepad.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\keyboard-full.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Update="wwwroot\mouse-flick.html">
@@ -49,6 +65,18 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Update="wwwroot\common.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\XBoxSeriesX-RawInput.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\XBoxSeriesX-RawInput.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\XBoxSeriesX-XInput.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\XBoxSeriesX-XInput.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

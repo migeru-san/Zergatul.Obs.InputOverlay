@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Zergatul.Obs.InputOverlay.Device
+namespace Zergatul.Obs.InputOverlay.RawInput.Device
 {
-    using static WinApi;
-
     public class RawGamepadDevice : RawHidDevice, IDisposable
     {
         public NativeMemoryBlock PreparsedData { get; }
@@ -14,7 +12,7 @@ namespace Zergatul.Obs.InputOverlay.Device
 
         internal RawGamepadDevice(
             IntPtr hDevice,
-            RID_DEVICE_INFO_HID hid,
+            WinApi.User32.RID_DEVICE_INFO_HID hid,
             NativeMemoryBlock preparsedData,
             int buttonsCount,
             IReadOnlyDictionary<int, Axis> axes)

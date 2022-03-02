@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Zergatul.Obs.InputOverlay.Device
+namespace Zergatul.Obs.InputOverlay.RawInput.Device
 {
     public abstract class RawHidDevice : RawDevice
     {
@@ -11,7 +11,7 @@ namespace Zergatul.Obs.InputOverlay.Device
         public string VendorName { get; }
         public string ProductName { get; }
 
-        internal RawHidDevice(IntPtr hDevice, WinApi.RID_DEVICE_INFO_HID hid)
+        internal RawHidDevice(IntPtr hDevice, WinApi.User32.RID_DEVICE_INFO_HID hid)
             : base(hDevice)
         {
             VendorId = hid.dwVendorId;

@@ -4,14 +4,16 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Security.Principal;
 using System.Threading;
-using Zergatul.Obs.InputOverlay.Device;
 using Zergatul.Obs.InputOverlay.Events;
 using Zergatul.Obs.InputOverlay.Keyboard;
 using Zergatul.Obs.InputOverlay.Mouse;
+using Zergatul.Obs.InputOverlay.RawInput.Device;
 
-namespace Zergatul.Obs.InputOverlay
+namespace Zergatul.Obs.InputOverlay.RawInput
 {
-    using static WinApi;
+    using static WinApi.Kernel32;
+    using static WinApi.User32;
+    using static WinApi.Hid;
     using static WinApiHelper;
 
     internal class RawDeviceInput : IRawDeviceInput
@@ -425,6 +427,11 @@ namespace Zergatul.Obs.InputOverlay
             {
                 foreach (var (_, axis) in gamepad.Axes)
                 {
+                    if (axis.Ignore)
+                    {
+                        continue;
+                    }
+
                     if (axis.LogicalMin < 0)
                     {
                         _logger.LogWarning($"axis.LogicalMin < 0 not implemented.");
@@ -442,8 +449,9 @@ namespace Zergatul.Obs.InputOverlay
                             hid.dwSizeHid);
                         if (status != HidPStatus.HIDP_STATUS_SUCCESS)
                         {
-                            _logger.LogWarning($"HidP_GetUsageValue failed. {status}.");
-                            return;
+                            _logger.LogWarning($"HidP_GetUsageValue failed for axis #{axis.Index}. This axis will be ignored. {status}.");
+                            axis.Ignore = true;
+                            continue;
                         }
 
                         if (axis.IsAbsolute)
